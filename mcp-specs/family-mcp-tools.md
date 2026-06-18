@@ -13,6 +13,13 @@ Initial tools:
 - `log_family_memory`
 - `prepare_weekly_family_review`
 - `prepare_emergency_pack`
+- `review_contact_update`
+- `prepare_family_gathering`
+- `draft_personal_hub_entry`
+- `submit_hub_contribution_for_review`
+- `research_family_decision`
+- `check_family_claim`
 
 All tools validate input, resolve actor context, evaluate policy, sanitize output, write audit events, and return minimal data.
 
+Contact, publishing, and claim-checking tools are Guardian-reviewed by default.

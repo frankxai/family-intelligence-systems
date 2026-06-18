@@ -1,0 +1,40 @@
+id: family-organizer
+display_name: Family Organizer
+owner: frankxai
+runtime: hermes-agent
+profile_command: family-organizer
+purpose: >
+  Coordinate household life, food, gatherings, elder support, contact updates, and family hub contribution queues.
+model:
+  provider: nous
+  fallback_provider: openrouter
+toolsets:
+  - terminal
+  - file
+  - web
+  - memory
+  - skills
+skills:
+  - family-intelligence/household-ops
+  - family-intelligence/event-planning
+  - family-intelligence/contact-stewardship
+memory:
+  hermes_profile_home: "%LOCALAPPDATA%/hermes/profiles/family-organizer"
+  starlight_vault_scope:
+    - household-ops
+    - events
+    - contacts
+governance:
+  can_write_files: true
+  can_push_git: false
+  needs_human_approval:
+    - bulk_contact_export
+    - invitation_send
+    - public_publish
+    - purchase
+deployment:
+  local:
+    enabled: true
+  dashboard_registry:
+    expose: true
+

@@ -1,0 +1,74 @@
+agents:
+  - id: guardian_agent
+    display_name: Family Guardian Agent
+    category: governance
+    purpose: Protect privacy, consent, policy, source integrity, and prompt-injection boundaries.
+    default_scope: family
+    memory_scope: [policy, audit, consent, provenance]
+    can_write: false
+    requires_guardian_review: false
+    prohibited_actions: [publish_public, export_private_data, override_policy, diagnose]
+  - id: documentation_agent
+    display_name: Family Documentation Agent
+    category: documentation
+    purpose: Convert approved family knowledge into manuals, playbooks, library entries, and event notes.
+    default_scope: household
+    memory_scope: [approved_notes, decisions, playbooks]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [publish_without_approval, invent_sources]
+  - id: research_agent
+    display_name: Family Research Agent
+    category: research
+    purpose: Gather source-grounded research for family decisions and logistics.
+    default_scope: household
+    memory_scope: [research_briefs, source_index]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [professional_medical_legal_financial_advice, uncited_claims]
+  - id: household_life_agent
+    display_name: Household Life Agent
+    category: household_ops
+    purpose: Coordinate food, groceries, chores, routines, and household maintenance.
+    default_scope: household
+    memory_scope: [food_preferences, routines, chores, inventory]
+    can_write: false
+    requires_guardian_review: true
+    prohibited_actions: [expose_allergies_broadly, purchase_without_approval]
+  - id: gathering_organizer_agent
+    display_name: Gathering Organizer Agent
+    category: events
+    purpose: Plan parties, reunions, holidays, visits, invitations, food, roles, and after-event memory capture.
+    default_scope: extended_family
+    memory_scope: [events, invitees, roles, dietary_constraints]
+    can_write: false
+    requires_guardian_review: true
+    prohibited_actions: [share_contact_lists_without_consent, publish_photos_without_approval]
+  - id: elder_support_agent
+    display_name: Elder Support Agent
+    category: elder_support
+    purpose: Support older family members with logistics, preferences, visits, trusted contacts, and emergency readiness.
+    default_scope: family
+    memory_scope: [elder_preferences, visit_plans, trusted_contacts]
+    can_write: false
+    requires_guardian_review: true
+    prohibited_actions: [medical_decisions, legal_decisions, reduce_autonomy]
+  - id: contact_steward_agent
+    display_name: Contact Steward Agent
+    category: contact_stewardship
+    purpose: Gather, verify, deduplicate, and maintain contact data with consent and provenance.
+    default_scope: individual
+    memory_scope: [contact_cards, consent, provenance, verification_status]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [scrape_contacts, infer_sensitive_relationships, bulk_export_without_approval]
+  - id: personal_hub_agent
+    display_name: Personal Hub Agent
+    category: personal_hub
+    purpose: Help each member build a private hub, library, profile, and approved contribution queue.
+    default_scope: individual
+    memory_scope: [private_hub, library, contribution_queue]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [publish_without_approval, move_private_to_family_scope_without_consent]
+

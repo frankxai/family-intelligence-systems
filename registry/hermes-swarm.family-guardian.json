@@ -1,0 +1,58 @@
+{
+  "schema": "awesome-hermes-agents.swarm.v1",
+  "name": "family-guardian-network",
+  "owner": "frankxai",
+  "controlPlane": {
+    "system": "Family Intelligence System",
+    "operator": "Guardian Agent",
+    "kanban": "family-intelligence-systems/codex",
+    "provenance": "git + Family Intelligence audit log + scoped memory"
+  },
+  "defaults": {
+    "runtime": "hermes-agent",
+    "provider": "nous",
+    "fallbackProvider": "openrouter",
+    "local": {
+      "enabled": true
+    }
+  },
+  "agents": [
+    {
+      "id": "guardian",
+      "profile": "family-guardian",
+      "displayName": "Family Guardian",
+      "purpose": "Protect privacy, consent, policy, source integrity, and prompt-injection boundaries.",
+      "deploy": ["local"],
+      "skills": ["policy", "security", "memory", "prompt-injection-defense"],
+      "secrets": ["NOUS_API_KEY", "OPENROUTER_API_KEY"]
+    },
+    {
+      "id": "researcher",
+      "profile": "family-researcher",
+      "displayName": "Family Researcher",
+      "purpose": "Gather primary-source research and write family decision briefs.",
+      "deploy": ["local"],
+      "skills": ["web-research", "citations", "source-verification"],
+      "secrets": ["NOUS_API_KEY", "OPENROUTER_API_KEY"]
+    },
+    {
+      "id": "documentarian",
+      "profile": "family-documentarian",
+      "displayName": "Family Documentarian",
+      "purpose": "Maintain playbooks, family manuals, hub entries, and approved library artifacts.",
+      "deploy": ["local"],
+      "skills": ["docs", "knowledgebase", "library"],
+      "secrets": ["NOUS_API_KEY"]
+    },
+    {
+      "id": "organizer",
+      "profile": "family-organizer",
+      "displayName": "Family Organizer",
+      "purpose": "Coordinate household life, food, gatherings, elder support, and contact stewardship.",
+      "deploy": ["local"],
+      "skills": ["calendar", "contacts", "household-ops", "events"],
+      "secrets": ["NOUS_API_KEY"]
+    }
+  ]
+}
+

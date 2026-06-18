@@ -14,6 +14,7 @@ This repository is not the deployable product. It is the intelligence layer:
 - security and license posture
 - setup and review playbooks
 - Codex implementation backlog
+- Guardian, organizer, documentation, research, contact-steward, elder-support, and personal-hub agent doctrine
 
 The runtime lives in `family-intelligence-os`.
 
@@ -25,3 +26,6 @@ The runtime lives in `family-intelligence-os`.
 - Default to read-only and deny-by-default policies.
 - Review license, security, and maintainability before any fork or vendored dependency.
 
+## Guardian Network
+
+The next layer is the Family Guardian Network: narrow agents for privacy, documentation, research, food and household life, gatherings, elder support, contact stewardship, and personal family hubs. See `canon/family-guardian-network.md`, `canon/family-hubs-and-libraries.md`, `registry/agents.yaml`, and `registry/hermes-swarm.family-guardian.json`.

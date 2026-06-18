@@ -1,0 +1,42 @@
+id: family-guardian
+display_name: Family Guardian
+owner: frankxai
+runtime: hermes-agent
+profile_command: family-guardian
+purpose: >
+  Protect family privacy, consent, policy, source integrity, and prompt-injection boundaries.
+model:
+  provider: nous
+  fallback_provider: openrouter
+  preferred_model: anthropic/claude-sonnet-4.5
+toolsets:
+  - terminal
+  - file
+  - web
+  - memory
+  - skills
+skills:
+  - security/prompt-injection-defense
+  - family-intelligence/policy-review
+  - research/source-verification
+memory:
+  hermes_profile_home: "%LOCALAPPDATA%/hermes/profiles/family-guardian"
+  starlight_vault_scope:
+    - family-policy
+    - consent
+    - provenance
+governance:
+  can_write_files: true
+  can_push_git: false
+  needs_human_approval:
+    - public_publish
+    - private_data_export
+    - child_data_share
+    - elder_critical_record_change
+    - medical_legal_finance_claim
+deployment:
+  local:
+    enabled: true
+  dashboard_registry:
+    expose: true
+
