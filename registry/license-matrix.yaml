@@ -1,0 +1,11 @@
+licenses:
+  permissive:
+    examples: [MIT, Apache-2.0]
+    default_action: adapter_allowed_vendor_review
+  copyleft:
+    examples: [GPL-3.0, AGPL-3.0]
+    default_action: adapter_only_until_commercial_review
+  unknown:
+    examples: [NOASSERTION]
+    default_action: manifest_only_until_confirmed
+

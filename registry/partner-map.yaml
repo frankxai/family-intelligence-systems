@@ -1,0 +1,18 @@
+partners:
+  - id: self_hosting_consultants
+    category: implementation
+    role: Deploy local sovereign nodes and backups.
+    trust_requirements: security_review, data_processing_terms
+  - id: estate_attorneys
+    category: advisory
+    role: Review legacy and succession workflows.
+    trust_requirements: family_owner_invitation, least_privilege_exports
+  - id: financial_planners
+    category: advisory
+    role: Review finance summaries and asset organization.
+    trust_requirements: explicit_confirmation, audit_required
+  - id: therapists_care_advisors
+    category: advisory
+    role: Support family care and elder workflows.
+    trust_requirements: medical_privacy_review, scoped_access
+

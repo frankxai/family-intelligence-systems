@@ -1,0 +1,18 @@
+templates:
+  - id: family_vault
+    name: Family Vault
+    purpose: Documents, contacts, emergency records, and recovery instructions.
+    sensitivity: critical
+  - id: family_dashboard
+    name: Family Dashboard
+    purpose: Overview of members, connectors, weekly review, and audit posture.
+    sensitivity: high
+  - id: family_weekly_review
+    name: Weekly Family Intelligence Review
+    purpose: Recurring ritual for tasks, calendar, documents, finances, memories, and decisions.
+    sensitivity: high
+  - id: family_emergency_pack
+    name: Family Emergency Pack
+    purpose: Confirmed export of emergency instructions and trusted contacts.
+    sensitivity: critical
+

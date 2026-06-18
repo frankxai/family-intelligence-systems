@@ -1,0 +1,112 @@
+connectors:
+  - id: nextcloud
+    domain: files_calendar_contacts
+    capabilities: [read_files_metadata, search_files, read_calendar, read_contacts]
+    required_environment_variables: [NEXTCLOUD_BASE_URL, NEXTCLOUD_USERNAME, NEXTCLOUD_APP_PASSWORD]
+    auth_model: app_password_or_oauth
+    read_actions: [files, calendars, contacts]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://docs.nextcloud.com/server/latest/developer_manual/
+    mvp_status: read_only_stub
+  - id: paperless_ngx
+    domain: documents
+    capabilities: [search_documents, read_document_metadata, read_tags]
+    required_environment_variables: [PAPERLESS_BASE_URL, PAPERLESS_API_TOKEN]
+    auth_model: token
+    read_actions: [documents, tags, correspondents]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://docs.paperless-ngx.com/api/
+    mvp_status: read_only_stub
+  - id: immich
+    domain: photos
+    capabilities: [search_assets, read_albums, read_asset_metadata]
+    required_environment_variables: [IMMICH_BASE_URL, IMMICH_API_KEY]
+    auth_model: api_key
+    read_actions: [assets, albums]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://immich.app/docs/api/
+    mvp_status: read_only_stub
+  - id: monica
+    domain: crm
+    capabilities: [search_contacts, read_contact_notes, read_reminders]
+    required_environment_variables: [MONICA_BASE_URL, MONICA_API_TOKEN]
+    auth_model: personal_access_token
+    read_actions: [contacts, notes, reminders]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://www.monicahq.com/api
+    mvp_status: read_only_stub
+  - id: homechart
+    domain: household_coordination
+    capabilities: [read_tasks, read_calendar, read_meals]
+    required_environment_variables: [HOMECHART_BASE_URL, HOMECHART_TOKEN]
+    auth_model: token
+    read_actions: [tasks, calendar, meals]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://github.com/candiddev/homechart
+    mvp_status: manifest_only
+  - id: yuvomi
+    domain: household_coordination
+    capabilities: [read_tasks, read_household_plan]
+    required_environment_variables: [YUVOMI_BASE_URL, YUVOMI_TOKEN]
+    auth_model: token
+    read_actions: [tasks, plans]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://github.com/ulsklyc/yuvomi
+    mvp_status: manifest_only
+  - id: grocy
+    domain: food
+    capabilities: [read_inventory, read_recipes, read_shopping_list]
+    required_environment_variables: [GROCY_BASE_URL, GROCY_API_KEY]
+    auth_model: api_key
+    read_actions: [inventory, recipes, shopping_lists]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://demo.grocy.info/api
+    mvp_status: read_only_stub
+  - id: actual_budget
+    domain: finance
+    capabilities: [read_budget_summary, read_accounts, read_categories]
+    required_environment_variables: [ACTUAL_SERVER_URL, ACTUAL_PASSWORD, ACTUAL_BUDGET_ID]
+    auth_model: server_password
+    read_actions: [budget_summary, accounts, categories]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://actualbudget.org/docs/api/
+    mvp_status: read_only_stub
+  - id: firefly_iii
+    domain: finance
+    capabilities: [read_accounts, read_budgets, read_summary]
+    required_environment_variables: [FIREFLY_BASE_URL, FIREFLY_ACCESS_TOKEN]
+    auth_model: personal_access_token
+    read_actions: [accounts, budgets, summary]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://api-docs.firefly-iii.org/
+    mvp_status: read_only_stub
+  - id: vaultwarden
+    domain: vault
+    capabilities: [read_health]
+    required_environment_variables: [VAULTWARDEN_BASE_URL]
+    auth_model: none_for_health_admin_token_for_admin
+    read_actions: [health]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://github.com/dani-garcia/vaultwarden/wiki
+    mvp_status: health_only
+  - id: home_assistant
+    domain: home
+    capabilities: [read_states, read_areas, read_devices]
+    required_environment_variables: [HOME_ASSISTANT_BASE_URL, HOME_ASSISTANT_TOKEN]
+    auth_model: long_lived_access_token
+    read_actions: [states, areas, devices]
+    write_actions: []
+    destructive_actions: []
+    target_api_docs: https://developers.home-assistant.io/docs/api/rest/
+    mvp_status: read_only_stub
+

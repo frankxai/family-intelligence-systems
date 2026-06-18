@@ -1,0 +1,102 @@
+scores:
+  - id: homechart
+    family_relevance: 5
+    api_quality: 3
+    docker_readiness: 4
+    mobile_friendliness: 3
+    maintenance_activity: 4
+    license_friendliness: 2
+    security_sensitivity: 4
+    adapter_difficulty: 3
+    mvp_priority: 4
+  - id: yuvomi
+    family_relevance: 5
+    api_quality: 3
+    docker_readiness: 4
+    mobile_friendliness: 4
+    maintenance_activity: 4
+    license_friendliness: 5
+    security_sensitivity: 4
+    adapter_difficulty: 3
+    mvp_priority: 4
+  - id: monica
+    family_relevance: 5
+    api_quality: 4
+    docker_readiness: 4
+    mobile_friendliness: 3
+    maintenance_activity: 4
+    license_friendliness: 2
+    security_sensitivity: 4
+    adapter_difficulty: 3
+    mvp_priority: 4
+  - id: nextcloud
+    family_relevance: 5
+    api_quality: 5
+    docker_readiness: 5
+    mobile_friendliness: 5
+    maintenance_activity: 5
+    license_friendliness: 2
+    security_sensitivity: 5
+    adapter_difficulty: 4
+    mvp_priority: 5
+  - id: paperless_ngx
+    family_relevance: 5
+    api_quality: 5
+    docker_readiness: 5
+    mobile_friendliness: 3
+    maintenance_activity: 5
+    license_friendliness: 3
+    security_sensitivity: 5
+    adapter_difficulty: 2
+    mvp_priority: 5
+  - id: immich
+    family_relevance: 5
+    api_quality: 4
+    docker_readiness: 5
+    mobile_friendliness: 5
+    maintenance_activity: 5
+    license_friendliness: 2
+    security_sensitivity: 5
+    adapter_difficulty: 3
+    mvp_priority: 5
+  - id: grocy
+    family_relevance: 4
+    api_quality: 4
+    docker_readiness: 5
+    mobile_friendliness: 3
+    maintenance_activity: 4
+    license_friendliness: 5
+    security_sensitivity: 3
+    adapter_difficulty: 2
+    mvp_priority: 4
+  - id: actual_budget
+    family_relevance: 5
+    api_quality: 4
+    docker_readiness: 4
+    mobile_friendliness: 4
+    maintenance_activity: 5
+    license_friendliness: 5
+    security_sensitivity: 5
+    adapter_difficulty: 4
+    mvp_priority: 5
+  - id: vaultwarden
+    family_relevance: 4
+    api_quality: 3
+    docker_readiness: 5
+    mobile_friendliness: 5
+    maintenance_activity: 5
+    license_friendliness: 2
+    security_sensitivity: 5
+    adapter_difficulty: 5
+    mvp_priority: 2
+  - id: home_assistant
+    family_relevance: 4
+    api_quality: 5
+    docker_readiness: 5
+    mobile_friendliness: 5
+    maintenance_activity: 5
+    license_friendliness: 5
+    security_sensitivity: 4
+    adapter_difficulty: 3
+    mvp_priority: 4
+

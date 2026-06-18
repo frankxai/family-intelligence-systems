@@ -1,0 +1,194 @@
+apps:
+  - id: homechart
+    name: Homechart
+    category: household_coordination
+    upstream: candiddev/homechart
+    function: Household coordination, tasks, calendars, meals, and family planning.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [household_tasks, family_calendar, chores, planning]
+    sensitivity: high
+    connector_priority: high
+    mcp_priority: medium
+    license_review_required: true
+    notes: License needs confirmation before fork or vendor decisions.
+  - id: yuvomi
+    name: Yuvomi
+    category: household_coordination
+    upstream: ulsklyc/yuvomi
+    function: Household planning and family organization.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [tasks, family_schedule, household_coordination]
+    sensitivity: high
+    connector_priority: high
+    mcp_priority: medium
+    license_review_required: false
+    notes: MIT project; adapter-first remains the strategy.
+  - id: monica
+    name: Monica
+    category: crm
+    upstream: monicahq/monica
+    function: Personal relationship manager for friends and family.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [relationships, birthdays, notes, family_crm]
+    sensitivity: high
+    connector_priority: high
+    mcp_priority: high
+    license_review_required: true
+    notes: AGPL; no vendoring without review.
+  - id: nextcloud
+    name: Nextcloud
+    category: files_calendar_contacts
+    upstream: nextcloud/server
+    function: Files, contacts, calendars, communication, and collaboration.
+    deployment: { docker: true, self_hosted: true, hosted_option: true }
+    family_use_cases: [files, calendars, contacts, sharing]
+    sensitivity: critical
+    connector_priority: high
+    mcp_priority: high
+    license_review_required: true
+    notes: Prefer scoped WebDAV/CardDAV/CalDAV/API access.
+  - id: paperless_ngx
+    name: Paperless-ngx
+    category: documents
+    upstream: paperless-ngx/paperless-ngx
+    function: Document archive, OCR, tagging, searchable family records.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [contracts, school_documents, health_documents, taxes, insurance, legal, warranties]
+    sensitivity: critical
+    connector_priority: high
+    mcp_priority: high
+    license_review_required: true
+    notes: Prefer read-only integration first.
+  - id: immich
+    name: Immich
+    category: photos
+    upstream: immich-app/immich
+    function: Self-hosted photo and video management.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [photos, videos, memories, albums, legacy]
+    sensitivity: critical
+    connector_priority: high
+    mcp_priority: high
+    license_review_required: true
+    notes: AGPL; photo metadata may expose child/location data.
+  - id: grocy
+    name: Grocy
+    category: food
+    upstream: grocy/grocy
+    function: Groceries, household inventory, chores, recipes, and meal planning.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [groceries, pantry, recipes, chores, inventory]
+    sensitivity: medium
+    connector_priority: high
+    mcp_priority: medium
+    license_review_required: false
+    notes: Strong MVP household operations candidate.
+  - id: mealie
+    name: Mealie
+    category: food
+    upstream: mealie-recipes/mealie
+    function: Recipe management and meal planning.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [recipes, meal_planning, shopping_lists]
+    sensitivity: medium
+    connector_priority: medium
+    mcp_priority: low
+    license_review_required: true
+    notes: AGPL; adapter-only.
+  - id: kitchenowl
+    name: KitchenOwl
+    category: food
+    upstream: TomBursch/kitchenowl
+    function: Self-hosted grocery list and recipe manager.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [groceries, recipes, shopping_lists]
+    sensitivity: medium
+    connector_priority: medium
+    mcp_priority: low
+    license_review_required: true
+    notes: Requested upstream normalized from TobiasBielefeld/KitchenOwl to TomBursch/kitchenowl.
+  - id: donetick
+    name: Donetick
+    category: tasks
+    upstream: donetick/donetick
+    function: Household task and chore tracking.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [chores, recurring_tasks, household_accountability]
+    sensitivity: medium
+    connector_priority: low
+    mcp_priority: low
+    license_review_required: true
+    notes: Optional after core household adapters.
+  - id: actual_budget
+    name: Actual Budget
+    category: finance
+    upstream: actualbudget/actual
+    function: Local-first personal and family budgeting.
+    deployment: { docker: true, self_hosted: true, hosted_option: true }
+    family_use_cases: [budgeting, spending_summary, accounts, assets]
+    sensitivity: critical
+    connector_priority: high
+    mcp_priority: high
+    license_review_required: false
+    notes: Read-only finance summary first.
+  - id: firefly_iii
+    name: Firefly III
+    category: finance
+    upstream: firefly-iii/firefly-iii
+    function: Self-hosted personal finance management.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [transactions, budgets, accounts, reports]
+    sensitivity: critical
+    connector_priority: medium
+    mcp_priority: medium
+    license_review_required: true
+    notes: Finance writes blocked by default.
+  - id: vaultwarden
+    name: Vaultwarden
+    category: vault
+    upstream: dani-garcia/vaultwarden
+    function: Unofficial Bitwarden-compatible credentials server.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [credentials, emergency_access, shared_secrets]
+    sensitivity: critical
+    connector_priority: medium
+    mcp_priority: low
+    license_review_required: true
+    notes: Docker image remains vaultwarden/server; no secret read/export tools in MVP.
+  - id: home_assistant
+    name: Home Assistant
+    category: home
+    upstream: home-assistant/core
+    function: Home automation and sensor intelligence.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [home_status, sensors, presence, energy, safety]
+    sensitivity: high
+    connector_priority: high
+    mcp_priority: medium
+    license_review_required: false
+    notes: Avoid location and child-presence leakage.
+  - id: bookstack
+    name: BookStack
+    category: knowledgebase
+    upstream: BookStackApp/BookStack
+    function: Structured family knowledgebase.
+    deployment: { docker: true, self_hosted: true, hosted_option: false }
+    family_use_cases: [family_canon, instructions, manuals, knowledgebase]
+    sensitivity: high
+    connector_priority: medium
+    mcp_priority: medium
+    license_review_required: false
+    notes: Good family canon target.
+  - id: outline
+    name: Outline
+    category: knowledgebase
+    upstream: outline/outline
+    function: Team knowledgebase usable for family canon.
+    deployment: { docker: true, self_hosted: true, hosted_option: true }
+    family_use_cases: [knowledgebase, notes, decisions]
+    sensitivity: high
+    connector_priority: low
+    mcp_priority: low
+    license_review_required: true
+    notes: Confirm license and commercial restrictions before deep integration.
+

@@ -1,0 +1,20 @@
+mcp_servers:
+  - id: official_reference_servers
+    name: Official MCP reference servers
+    upstream: modelcontextprotocol/servers
+    role: reference_implementations
+    use_policy: Reference only; do not dynamically load remote servers.
+    security_review_required: true
+  - id: official_typescript_sdk
+    name: Official MCP TypeScript SDK
+    upstream: modelcontextprotocol/typescript-sdk
+    role: sdk
+    use_policy: Use for controlled gateway implementation after dependency license confirmation.
+    security_review_required: true
+  - id: github_mcp_server
+    name: GitHub MCP Server
+    upstream: github/github-mcp-server
+    role: implementation_reference
+    use_policy: Study manifest and auth patterns; do not import tools into family runtime.
+    security_review_required: true
+
