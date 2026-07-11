@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/consent-receipt.v1.json",
+  "title": "Consent Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "consent_id",
+    "family_id",
+    "subject_person_id",
+    "authorized_by_person_id",
+    "authority_basis",
+    "purposes",
+    "data_categories",
+    "scope",
+    "actions",
+    "notice_version",
+    "notice_language",
+    "granted_at",
+    "status"
+  ],
+  "properties": {
+    "consent_id": { "type": "string", "pattern": "^consent_[A-Za-z0-9_-]+$" },
+    "family_id": { "type": "string", "minLength": 1 },
+    "subject_person_id": { "type": "string", "minLength": 1 },
+    "authorized_by_person_id": { "type": "string", "minLength": 1 },
+    "authority_basis": { "enum": ["self", "parental_responsibility", "legal_guardian", "authorized_representative"] },
+    "purposes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1, "maxLength": 240 }, "uniqueItems": true },
+    "data_categories": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "scope": { "enum": ["self", "household", "core_circle", "extended_family", "descendants_guardianship", "trusted_advisors", "public_archive"] },
+    "actions": { "type": "array", "minItems": 1, "items": { "enum": ["collect", "store", "transcribe", "summarize", "share", "publish", "ai_process", "export"] }, "uniqueItems": true },
+    "notice_version": { "type": "string", "minLength": 1 },
+    "notice_language": { "type": "string", "minLength": 2, "maxLength": 35 },
+    "granted_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "withdrawn_at": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["active", "expired", "withdrawn", "superseded"] },
+    "supersedes": { "type": "string", "minLength": 1 },
+    "age_transition_review_at": { "type": "string", "format": "date-time" }
+  }
+}

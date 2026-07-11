@@ -18,6 +18,31 @@ This repository is not the deployable product. It is the intelligence layer:
 
 The runtime lives in `family-intelligence-os`.
 
+## Claims And Continuity Kernel
+
+The July 2026 foundation adds the missing governance layer around family memory:
+
+- `adrs/ADR-001-claims-not-facts.md`
+- `protocols/claims/v1.md`
+- `protocols/evidence/v1.md`
+- `protocols/consent/v1.md`
+- `protocols/publication/v1.md`
+- `protocols/disputes/v1.md`
+- `protocols/succession/v1.md`
+- `protocols/identity/v1.md`
+- `protocols/export-restore/v1.md`
+- `schemas/*.schema.json`
+- `canon/family-circles-and-guardianship.md`
+- `canon/german-family-portal.md`
+- `templates/de/`
+- `skills/`
+
+The family tree is a view over accepted, scope-appropriate claims. Agents can extract and compare; only authorized humans accept claims, resolve sensitive disputes, approve publication, or release succession access.
+
+## Founding Proof
+
+The public-safe pilot is the **Riemer-Gorte Living Archive** / **Lebendiges Familienarchiv Riemer-Gorte**. Real family records stay outside this public repository. Living people are private by default, and children never appear in public fixtures, screenshots, analytics, or examples.
+
 ## Hard Rules
 
 - Absorb capabilities, not code.
@@ -25,6 +50,8 @@ The runtime lives in `family-intelligence-os`.
 - Treat family data as high-trust infrastructure.
 - Default to read-only and deny-by-default policies.
 - Review license, security, and maintainability before any fork or vendored dependency.
+- Keep private archival availability separate from public publication.
+- Treat `noindex` and hidden URLs as discoverability hints, never authorization.
 
 ## Guardian Network
 

@@ -71,4 +71,48 @@ agents:
     can_write: true
     requires_guardian_review: true
     prohibited_actions: [publish_without_approval, move_private_to_family_scope_without_consent]
-
+  - id: lineage_intake_agent
+    display_name: Lineage Intake Agent
+    category: lineage_intake
+    purpose: Convert untrusted submissions into quarantined candidate claims with provenance and risk flags.
+    default_scope: private
+    memory_scope: [intake_cases, candidate_claims, attachment_metadata]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [accept_claim, merge_identity, contact_people, publish, open_unscanned_attachment]
+  - id: evidence_assessor_agent
+    display_name: Evidence Assessor Agent
+    category: evidence
+    purpose: Grade sources, map support and contradiction, and prepare neutral evidence matrices.
+    default_scope: family
+    memory_scope: [evidence_metadata, provenance, source_grades, contradiction_matrix]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [declare_lineage_true, accept_claim, resolve_sensitive_dispute, publish]
+  - id: consent_steward_agent
+    display_name: Consent Steward Agent
+    category: consent
+    purpose: Track specific, revocable permissions and living-person impact.
+    default_scope: private
+    memory_scope: [consent_receipts, notice_versions, withdrawals, age_transition_reviews]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [fabricate_consent, broaden_purpose, consent_for_capable_adult, publish]
+  - id: dispute_mediator_agent
+    display_name: Dispute Mediator Agent
+    category: disputes
+    purpose: Structure contested claims and evidence without deciding sensitive family truth.
+    default_scope: family
+    memory_scope: [dispute_metadata, evidence_matrix, requested_remedies]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [decide_parentage, diagnose_motive, pressure_participant, publish_dispute]
+  - id: continuity_custodian_agent
+    display_name: Continuity Custodian Agent
+    category: succession
+    purpose: Prepare emergency and succession checklists, drills, and minimal release packets.
+    default_scope: trusted_advisor
+    memory_scope: [succession_policy, guardian_designations, drill_results, release_metadata]
+    can_write: false
+    requires_guardian_review: true
+    prohibited_actions: [verify_death, declare_incapacity, release_access, export_secret, bypass_quorum]

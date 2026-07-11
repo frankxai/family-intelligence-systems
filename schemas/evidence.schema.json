@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/evidence.v1.json",
+  "title": "Family Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "family_id",
+    "kind",
+    "title",
+    "source_grade",
+    "rights_status",
+    "provenance",
+    "sensitivity",
+    "living_persons_affected",
+    "claim_refs",
+    "created_at"
+  ],
+  "properties": {
+    "evidence_id": { "type": "string", "pattern": "^evidence_[A-Za-z0-9_-]+$" },
+    "family_id": { "type": "string", "minLength": 1 },
+    "kind": { "enum": ["civil_record", "church_record", "letter", "photo", "audio", "video", "oral_history", "book", "index", "tree", "web_page", "research_note", "other"] },
+    "title": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "original_language": { "type": "string", "minLength": 2, "maxLength": 35 },
+    "source_uri": { "type": "string", "format": "uri" },
+    "storage_ref": { "type": "string", "minLength": 1 },
+    "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "source_grade": { "enum": ["A", "B", "C", "D", "unknown"] },
+    "rights_status": { "enum": ["owned", "licensed", "public_domain", "permission_granted", "review_required", "blocked"] },
+    "allowed_uses": { "type": "array", "items": { "enum": ["private_research", "family_share", "publication", "derivative", "ai_processing"] }, "uniqueItems": true },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provided_by", "obtained_at", "method"],
+      "properties": {
+        "provided_by": { "type": "string", "minLength": 1 },
+        "obtained_at": { "type": "string", "format": "date-time" },
+        "method": { "enum": ["upload", "email", "interview", "connector", "archive_download", "manual_entry"] },
+        "source_note": { "type": "string", "maxLength": 2000 }
+      }
+    },
+    "extraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor", "method", "created_at"],
+      "properties": {
+        "actor": { "type": "string", "minLength": 1 },
+        "method": { "type": "string", "minLength": 1 },
+        "created_at": { "type": "string", "format": "date-time" },
+        "reviewed_by": { "type": "string" }
+      }
+    },
+    "sensitivity": { "enum": ["low", "medium", "high", "critical"] },
+    "living_persons_affected": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "claim_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "anyOf": [
+    { "required": ["source_uri"] },
+    { "required": ["storage_ref"] }
+  ]
+}
