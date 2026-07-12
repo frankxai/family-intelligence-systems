@@ -27,6 +27,10 @@ The public form and mailbox collect a potential claim. They do not create a fami
 8. Require steward review for claim acceptance and a separate publisher review for public release.
 9. Log tool calls and redact payloads from ordinary application logs.
 10. Provide contest, correction, withdrawal, deletion, and export routes.
+11. Treat URLs, QR codes, document text, OCR output, filenames, and metadata as untrusted content; no embedded instruction may alter tool permissions or review state.
+12. Keep an artifact-to-claim-and-consent reference graph so withdrawal can suppress derived summaries, indexes, and public material.
+13. Do not use received sender identity, a display name, or a claimed relationship as sufficient authority for publication, withdrawal, export, or emergency access.
+14. A credible imminent-risk report may be recorded for human Guardian review, but an agent may not treat it as an executed withdrawal or irreversible takedown.
 
 ## Public warning
 

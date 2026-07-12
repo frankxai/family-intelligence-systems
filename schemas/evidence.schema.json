@@ -27,6 +27,21 @@
     "storage_ref": { "type": "string", "minLength": 1 },
     "sha256": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
     "source_grade": { "enum": ["A", "B", "C", "D", "unknown"] },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["custody", "identity_match", "time_context", "completeness", "independence", "grade_rationale"],
+      "properties": {
+        "custody": { "enum": ["traceable", "reported", "unknown"] },
+        "identity_match": { "enum": ["confirmed", "plausible", "ambiguous", "mismatch"] },
+        "time_context": { "enum": ["contemporaneous", "retrospective", "unknown"] },
+        "completeness": { "enum": ["complete", "partial", "altered_or_unclear", "unknown"] },
+        "independence": { "enum": ["independent", "derived_or_duplicate", "unknown"] },
+        "grade_rationale": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "reviewed_by": { "type": "string", "minLength": 1 },
+        "reviewed_at": { "type": "string", "format": "date-time" }
+      }
+    },
     "rights_status": { "enum": ["owned", "licensed", "public_domain", "permission_granted", "review_required", "blocked"] },
     "allowed_uses": { "type": "array", "items": { "enum": ["private_research", "family_share", "publication", "derivative", "ai_processing"] }, "uniqueItems": true },
     "provenance": {
@@ -59,5 +74,54 @@
   "anyOf": [
     { "required": ["source_uri"] },
     { "required": ["storage_ref"] }
+  ],
+  "allOf": [
+    {
+      "if": { "properties": { "source_grade": { "enum": ["A", "B", "C", "D"] } }, "required": ["source_grade"] },
+      "then": { "required": ["assessment"] }
+    },
+    {
+      "if": { "properties": { "source_grade": { "const": "A" } }, "required": ["source_grade"] },
+      "then": {
+        "properties": {
+          "assessment": {
+            "properties": {
+              "custody": { "const": "traceable" },
+              "identity_match": { "const": "confirmed" },
+              "time_context": { "const": "contemporaneous" },
+              "completeness": { "const": "complete" },
+              "independence": { "const": "independent" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "source_grade": { "const": "B" } }, "required": ["source_grade"] },
+      "then": {
+        "properties": {
+          "assessment": {
+            "properties": {
+              "custody": { "enum": ["traceable", "reported"] },
+              "identity_match": { "enum": ["confirmed", "plausible"] },
+              "completeness": { "enum": ["complete", "partial"] },
+              "independence": { "const": "independent" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "source_grade": { "enum": ["C", "D"] } }, "required": ["source_grade"] },
+      "then": {
+        "properties": {
+          "assessment": {
+            "properties": {
+              "identity_match": { "enum": ["confirmed", "plausible", "ambiguous"] }
+            }
+          }
+        }
+      }
+    }
   ]
 }

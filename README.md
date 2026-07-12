@@ -34,6 +34,7 @@ The July 2026 foundation adds the missing governance layer around family memory:
 - `schemas/*.schema.json`
 - `canon/family-circles-and-guardianship.md`
 - `canon/german-family-portal.md`
+- `canon/data-classification-and-processing-map.md`
 - `templates/de/`
 - `skills/`
 
