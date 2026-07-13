@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/private-tenant-manifest.v1.json",
+  "title": "Private Family Tenant Manifest",
+  "description": "Policy configuration only. Personal records and secrets are forbidden in this manifest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest_version", "tenant_id", "default_locale", "default_scope", "enabled_circles", "child_policy", "continuity_policy", "data_residency", "created_at", "updated_at"],
+  "properties": {
+    "manifest_version": { "const": "1" },
+    "tenant_id": { "type": "string", "pattern": "^fam_[A-Za-z0-9_-]+$" },
+    "display_label": { "type": "string", "maxLength": 120 },
+    "default_locale": { "type": "string", "pattern": "^[a-z]{2}(?:-[A-Z]{2})?$" },
+    "supported_locales": { "type": "array", "items": { "type": "string", "pattern": "^[a-z]{2}(?:-[A-Z]{2})?$" }, "uniqueItems": true },
+    "default_scope": { "const": "self" },
+    "enabled_circles": {
+      "type": "array",
+      "items": { "enum": ["self", "household", "core_circle", "extended_family", "descendants_guardianship", "trusted_advisors", "public_archive"] },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "private_host": { "type": "string", "format": "hostname" },
+    "child_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["guardian_required", "public_discoverability", "age_transition_review"],
+      "properties": {
+        "guardian_required": { "const": true },
+        "public_discoverability": { "const": false },
+        "age_transition_review": { "const": true }
+      }
+    },
+    "continuity_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inactivity_release_allowed", "human_quorum_required", "drill_required"],
+      "properties": {
+        "inactivity_release_allowed": { "const": false },
+        "human_quorum_required": { "const": true },
+        "drill_required": { "const": true }
+      }
+    },
+    "data_residency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["region", "encryption_profile", "export_profile"],
+      "properties": {
+        "region": { "type": "string", "minLength": 1 },
+        "encryption_profile": { "type": "string", "minLength": 1 },
+        "export_profile": { "type": "string", "minLength": 1 }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  }
+}

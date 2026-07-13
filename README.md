@@ -31,14 +31,18 @@ The July 2026 foundation adds the missing governance layer around family memory:
 - `protocols/succession/v1.md`
 - `protocols/identity/v1.md`
 - `protocols/export-restore/v1.md`
+- `protocols/intake/v1.md`
 - `schemas/*.schema.json`
 - `canon/family-circles-and-guardianship.md`
+- `canon/private-family-tenant-topology.md`
 - `canon/german-family-portal.md`
 - `canon/data-classification-and-processing-map.md`
 - `templates/de/`
 - `skills/`
 
 The family tree is a view over accepted, scope-appropriate claims. Agents can extract and compare; only authorized humans accept claims, resolve sensitive disputes, approve publication, or release succession access.
+
+The private pilot uses one governed tenant with resource-scoped circles. Household, kinship, guardianship, godparent relationships, and access are modeled independently; no child's name belongs in a hostname, URL, public fixture, screenshot, or repository.
 
 ## Founding Proof
 

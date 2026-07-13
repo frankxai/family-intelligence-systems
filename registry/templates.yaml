@@ -43,3 +43,15 @@ templates:
     name: Family Intelligence DPIA Outline
     purpose: Privacy-risk assessment structure for hosted family-data processing.
     sensitivity: high
+  - id: secure_intake_case
+    name: Secure Family Intake Case
+    purpose: Quarantined transport, scanning, extraction, and steward-review state without claim acceptance.
+    sensitivity: high
+  - id: secure_intake_token
+    name: One-Time Family Intake Token
+    purpose: Single-use, expiring, family-scoped submission authorization.
+    sensitivity: critical
+  - id: private_tenant_manifest
+    name: Private Family Tenant Manifest
+    purpose: Policy-only tenant configuration with no personal records or secrets.
+    sensitivity: critical
