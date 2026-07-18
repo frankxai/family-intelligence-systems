@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/archival-description.v1.json",
+  "title": "Family Archival Description",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["description_id", "artifact_ref", "title", "languages", "description_provenance", "rights_status", "sensitivity", "access_condition", "review_state"],
+  "properties": {
+    "description_id": { "type": "string", "pattern": "^description_[A-Za-z0-9_-]+$" },
+    "artifact_ref": { "type": "string", "pattern": "^artifact_[A-Za-z0-9_-]+$" },
+    "collection_ref": { "type": "string", "pattern": "^collection_[A-Za-z0-9_-]+$" },
+    "title": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "original_title": { "type": "string", "maxLength": 500 },
+    "languages": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 2, "maxLength": 35 } },
+    "creator_statement": { "type": "string", "maxLength": 1000 },
+    "custody_statement": { "type": "string", "maxLength": 2000 },
+    "uncertainties": { "type": "array", "items": { "type": "string", "maxLength": 1000 } },
+    "description_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["described_by", "described_at"],
+      "properties": {
+        "described_by": { "type": "string", "pattern": "^(human|agent)_[A-Za-z0-9_-]+$" },
+        "described_at": { "type": "string", "format": "date-time" },
+        "source_refs": { "type": "array", "uniqueItems": true, "items": { "type": "string", "maxLength": 240 } }
+      }
+    },
+    "rights_status": { "enum": ["cleared_private", "cleared_public", "review_required", "blocked", "unknown"] },
+    "sensitivity": { "enum": ["ordinary", "living_person", "child_dependent", "special_category", "community_restricted", "succession", "unknown"] },
+    "access_condition": { "enum": ["self", "household", "core_circle", "extended_family", "trusted_advisors", "public_candidate", "blocked"] },
+    "community_authority_ref": { "type": "string", "pattern": "^community_decision_[A-Za-z0-9_-]+$" },
+    "affected_person_refs": { "type": "array", "uniqueItems": true, "items": { "type": "string", "maxLength": 240 } },
+    "consent_review_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^consent_review_[A-Za-z0-9_-]+$" } },
+    "human_review_ref": { "type": "string", "pattern": "^human_decision_[A-Za-z0-9_-]+$" },
+    "review_state": { "enum": ["draft", "human_review_required", "private_approved", "publication_review"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "review_state": { "enum": ["private_approved", "publication_review"] } }, "required": ["review_state"] },
+      "then": { "required": ["human_review_ref"] }
+    },
+    {
+      "if": { "properties": { "rights_status": { "const": "blocked" } }, "required": ["rights_status"] },
+      "then": {
+        "properties": {
+          "access_condition": { "const": "blocked" },
+          "review_state": { "enum": ["draft", "human_review_required"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "rights_status": { "enum": ["review_required", "unknown"] } }, "required": ["rights_status"] },
+      "then": {
+        "properties": {
+          "access_condition": { "not": { "const": "public_candidate" } },
+          "review_state": { "enum": ["draft", "human_review_required"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "sensitivity": { "enum": ["child_dependent", "special_category", "community_restricted", "succession", "unknown"] } }, "required": ["sensitivity"] },
+      "then": { "properties": { "access_condition": { "not": { "const": "public_candidate" } } } }
+    },
+    {
+      "if": { "properties": { "sensitivity": { "const": "community_restricted" } }, "required": ["sensitivity"] },
+      "then": { "required": ["community_authority_ref"] }
+    },
+    {
+      "if": { "properties": { "access_condition": { "const": "public_candidate" } }, "required": ["access_condition"] },
+      "then": {
+        "required": ["human_review_ref"],
+        "properties": {
+          "rights_status": { "const": "cleared_public" },
+          "review_state": { "const": "publication_review" }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "access_condition": { "const": "public_candidate" },
+          "sensitivity": { "const": "living_person" }
+        },
+        "required": ["access_condition", "sensitivity"]
+      },
+      "then": { "required": ["consent_review_refs"] }
+    }
+  ]
+}

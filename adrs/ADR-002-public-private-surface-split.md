@@ -13,7 +13,7 @@ A public founder story, a private family archive, and a reusable hosted product 
 Use three surfaces with one portable protocol:
 
 1. Public discovery: `frankx.ai/family` and `frankx.ai/family-intelligence-system` contain only public-safe copy, examples, and downloads.
-2. Private pilot: an authenticated German-first Family Intelligence OS deployment for the Riemer-Gorte family. Its final hostname requires DNS and identity review.
+2. Private pilot: an authenticated German-first Family Intelligence OS deployment for a private founding-family tenant. Its final hostname requires DNS and identity review.
 3. Reusable product: the `family-intelligence-os` Vercel/self-host template. Each family is a tenant with explicit circles, row-level authorization, scoped encryption, audit, and export.
 
 ## Non-negotiables

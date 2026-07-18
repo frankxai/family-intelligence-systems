@@ -6,7 +6,7 @@ Date: 2026-07-12
 
 ## Product-language decision
 
-Use `Family Intelligence System` and `Familien-Intelligenz-System` as descriptive category language, not as a cleared trademark. Use `Family Intelligence Infrastructure` for the protocol and governance layer. Use **Lebendiges Familienarchiv Riemer-Gorte** / **Riemer-Gorte Living Archive** for the founding proof.
+Use `Family Intelligence System` and `Familien-Intelligenz-System` as descriptive category language, not as a cleared trademark. Use `Family Intelligence Infrastructure` for the protocol and governance layer. Use **Founding Family Living Archive** / **Lebendiges Familienarchiv des Gründungstenants** as an explicitly synthetic public reference label; the real founding-family identity remains private.
 
 “FamilyOS” is crowded across active household, parenting, and logistics products. “The Family Intelligence System” is also used by a parenting product. A separate brand name needs a naming and trademark review before purchase, launch, or paid promotion.
 
@@ -22,7 +22,7 @@ Use `Family Intelligence System` and `Familien-Intelligenz-System` as descriptiv
 | Generic hosted product | future cleared brand domain with `app.<domain>` | Naming, RDAP, trademark, cost, and DNS review required |
 | Family tenants | `<family-slug>.app.<domain>` or custom domain | Hosted phase; tenant and certificate automation required |
 
-Do not use `frank-riemer.com` as the implementation baseline. The private estate registry marks provider ownership/SSL as unverified and currently assigns it the role of personal identity alias/redirect.
+Do not publish or depend on a private family domain from this doctrine repository. Domain ownership, SSL, identity mapping, and redirect behavior belong to the private estate registry and require human verification.
 
 ## Email
 

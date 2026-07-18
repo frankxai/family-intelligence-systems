@@ -1,0 +1,44 @@
+{
+  "pack_id": "jurisdiction_nl_nl_v1",
+  "version": "1.0.0",
+  "jurisdiction": { "code": "NL", "name": "Netherlands", "level": "country" },
+  "status": "research_only",
+  "effective_from": "2026-07-18",
+  "review_due": "2027-01-18",
+  "reviewer": { "type": "unassigned", "reference": "qualified Dutch archives/privacy reviewer required" },
+  "authorities": [
+    {
+      "title": "Burgerlijk Wetboek Boek 1, artikel 17a",
+      "url": "https://wetten.overheid.nl/BWBR0002656/",
+      "source_type": "official_law",
+      "checked_at": "2026-07-18"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "rule_nl_birth_register_transfer",
+      "domain": "civil_records",
+      "effect": "informational",
+      "summary": "Dutch civil birth registers are transferred to the designated archival repository after 100 years under Article 17a; archive transfer is not by itself permission for unrestricted republication.",
+      "authority_indexes": [0],
+      "parameters": { "record_type": "birth", "years": 100 }
+    },
+    {
+      "rule_id": "rule_nl_marriage_register_transfer",
+      "domain": "civil_records",
+      "effect": "informational",
+      "summary": "Dutch marriage and registered-partnership registers are transferred after 75 years; downstream access, rights, and living-person impact still require review.",
+      "authority_indexes": [0],
+      "parameters": { "record_type": "marriage_or_registered_partnership", "years": 75 }
+    },
+    {
+      "rule_id": "rule_nl_death_register_transfer",
+      "domain": "civil_records",
+      "effect": "informational",
+      "summary": "Dutch death registers are transferred after 50 years; the record may still contain information about living people and does not automatically authorize publication.",
+      "authority_indexes": [0],
+      "parameters": { "record_type": "death", "years": 50 }
+    }
+  ],
+  "unsupported_behavior": "block_pending_review"
+}

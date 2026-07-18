@@ -1,5 +1,12 @@
 # Schema changelog
 
+## 2026-07-18
+
+- Added jurisdiction-pack schema and research-only EU GDPR, Dutch, and German packs with fail-closed activation.
+- Added archival-description and preservation-event schemas for provenance, fixity, derivatives, migration, and restore evidence.
+- Added community-authority decisions and private bilateral federation envelopes.
+- Added Historian, Librarian, Preservation, Jurisdiction, Community Authority, and Open-Source Maintainer agent contracts.
+
 ## 2026-07-13
 
 - Added `intake-token.schema.json` for single-use, family-scoped secure submission links.

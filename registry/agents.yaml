@@ -116,3 +116,57 @@ agents:
     can_write: false
     requires_guardian_review: true
     prohibited_actions: [verify_death, declare_incapacity, release_access, export_secret, bypass_quorum]
+  - id: family_historian_agent
+    display_name: Family Historian Agent
+    category: history
+    purpose: Build source-linked timelines, historical context, and biographies while preserving conflicting claims and uncertainty.
+    default_scope: family
+    memory_scope: [candidate_narratives, timelines, source_index, historical_context, uncertainty]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [accept_claim, invent_context, erase_contradiction, merge_identity, diagnose_motive, publish]
+  - id: family_librarian_agent
+    display_name: Family Librarian Agent
+    category: library
+    purpose: Maintain collections, taxonomy, opaque identifiers, archival descriptions, finding aids, and controlled reading rooms.
+    default_scope: family
+    memory_scope: [collection_metadata, archival_descriptions, taxonomy, finding_aids, access_conditions]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [change_sensitivity, widen_access, accept_authenticity, expose_source_uri, publish]
+  - id: preservation_steward_agent
+    display_name: Preservation Steward Agent
+    category: preservation
+    purpose: Propose fixity checks, preservation copies, derivatives, migrations, restore drills, and dependency-aware suppression.
+    default_scope: private
+    memory_scope: [preservation_events, fixity, derivatives, storage_classes, restore_receipts, retention_rules]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [delete_original, release_hold, deaccession, widen_access, publish, hide_loss]
+  - id: jurisdiction_navigator_agent
+    display_name: Jurisdiction Navigator Agent
+    category: jurisdiction
+    purpose: Resolve potentially applicable versioned jurisdiction packs and prepare qualified human review packets.
+    default_scope: private
+    memory_scope: [jurisdiction_pack_metadata, applicability_inputs, authority_citations, review_status]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [legal_determination, activate_unreviewed_pack, jurisdiction_shop, override_consent, publish]
+  - id: community_authority_liaison_agent
+    display_name: Community Authority Liaison Agent
+    category: community_authority
+    purpose: Identify possible collective or cultural restrictions and prepare community-authority review without claiming representation.
+    default_scope: private
+    memory_scope: [authority_references, restrictions, appointed_contacts, review_status, repatriation_metadata]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [represent_community, fabricate_authority, override_restriction, digitize_blocked_material, ai_process_blocked_material, publish]
+  - id: open_source_maintainer_agent
+    display_name: Open-Source Maintainer Agent
+    category: open_source
+    purpose: Triage public code and doctrine contributions, run validation, check licenses and provenance, and prepare independently reviewable releases using synthetic fixtures only.
+    default_scope: public
+    memory_scope: [public_issues, pull_requests, release_metadata, dependency_provenance, synthetic_fixtures]
+    can_write: true
+    requires_guardian_review: true
+    prohibited_actions: [access_private_tenant, use_real_family_fixture, merge_own_change, approve_sensitive_governance, publish_secret, select_license_unilaterally]

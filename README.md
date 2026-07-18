@@ -14,7 +14,7 @@ This repository is not the deployable product. It is the intelligence layer:
 - security and license posture
 - setup and review playbooks
 - Codex implementation backlog
-- Guardian, organizer, documentation, research, contact-steward, elder-support, and personal-hub agent doctrine
+- Guardian, historian, librarian, preservation, jurisdiction, community-authority, open-source maintainer, organizer, documentation, research, contact-steward, elder-support, and personal-hub agent doctrine
 
 The runtime lives in `family-intelligence-os`.
 
@@ -44,9 +44,26 @@ The family tree is a view over accepted, scope-appropriate claims. Agents can ex
 
 The private pilot uses one governed tenant with resource-scoped circles. Household, kinship, guardianship, godparent relationships, and access are modeled independently; no child's name belongs in a hostname, URL, public fixture, screenshot, or repository.
 
+## Global Preservation And Federation Layer
+
+The next kernel adds archival description, preservation events, jurisdiction packs, community authority, public-artifact sanitization, and bilateral federation:
+
+- `protocols/archival-description/v1.md`
+- `protocols/preservation/v1.md`
+- `protocols/jurisdictions/v1.md`
+- `protocols/community-authority/v1.md`
+- `protocols/federated-contribution/v1.md`
+- `protocols/public-artifact-sanitization/v1.md`
+- `protocols/trusted-transition-admission/v1.md`
+- `jurisdictions/`
+- `prompts/agent-contracts/`
+- `CONTRIBUTING.md`, `GOVERNANCE.md`, `SECURITY.md`
+
+Jurisdiction packs remain inactive until qualified human review. Federation is bilateral and quarantined: it never creates a central world tree or automatic identity merge. Community restrictions may be stricter than individual family consent. Portable receipt fields are non-authoritative; protected state transitions require the server-resolved `@family/security` admission runtime.
+
 ## Founding Proof
 
-The public-safe pilot is the **Riemer-Gorte Living Archive** / **Lebendiges Familienarchiv Riemer-Gorte**. Real family records stay outside this public repository. Living people are private by default, and children never appear in public fixtures, screenshots, analytics, or examples.
+The public-safe reference surface is the **Founding Family Living Archive** / **Lebendiges Familienarchiv des Gründungstenants**. This name is synthetic and unlinkable; the actual founding family identity and all real records stay outside this public repository. Living people are private by default, and children never appear in public fixtures, screenshots, analytics, or examples.
 
 ## Hard Rules
 

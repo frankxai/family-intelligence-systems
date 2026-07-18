@@ -2,7 +2,9 @@
 
 ## Produktname
 
-**Lebendiges Familienarchiv Riemer-Gorte**
+**Lebendiges Familienarchiv des Gründungstenants**
+
+This public doctrine uses an explicitly synthetic tenant label. The actual founding-family name belongs only in the private tenant vault.
 
 Unterzeile: *Erinnerungen bewahren. Aussagen belegen. Zugänge verantwortungsvoll weitergeben.*
 
