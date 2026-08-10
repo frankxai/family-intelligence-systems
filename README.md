@@ -14,9 +14,56 @@ This repository is not the deployable product. It is the intelligence layer:
 - security and license posture
 - setup and review playbooks
 - Codex implementation backlog
-- Guardian, organizer, documentation, research, contact-steward, elder-support, and personal-hub agent doctrine
+- Guardian, historian, librarian, preservation, jurisdiction, community-authority, open-source maintainer, organizer, documentation, research, contact-steward, elder-support, and personal-hub agent doctrine
 
 The runtime lives in `family-intelligence-os`.
+
+## Claims And Continuity Kernel
+
+The July 2026 foundation adds the missing governance layer around family memory:
+
+- `adrs/ADR-001-claims-not-facts.md`
+- `protocols/claims/v1.md`
+- `protocols/evidence/v1.md`
+- `protocols/consent/v1.md`
+- `protocols/publication/v1.md`
+- `protocols/disputes/v1.md`
+- `protocols/succession/v1.md`
+- `protocols/identity/v1.md`
+- `protocols/export-restore/v1.md`
+- `protocols/intake/v1.md`
+- `schemas/*.schema.json`
+- `canon/family-circles-and-guardianship.md`
+- `canon/private-family-tenant-topology.md`
+- `canon/german-family-portal.md`
+- `canon/data-classification-and-processing-map.md`
+- `templates/de/`
+- `skills/`
+
+The family tree is a view over accepted, scope-appropriate claims. Agents can extract and compare; only authorized humans accept claims, resolve sensitive disputes, approve publication, or release succession access.
+
+The private pilot uses one governed tenant with resource-scoped circles. Household, kinship, guardianship, godparent relationships, and access are modeled independently; no child's name belongs in a hostname, URL, public fixture, screenshot, or repository.
+
+## Global Preservation And Federation Layer
+
+The next kernel adds archival description, preservation events, jurisdiction packs, community authority, public-artifact sanitization, and bilateral federation:
+
+- `protocols/archival-description/v1.md`
+- `protocols/preservation/v1.md`
+- `protocols/jurisdictions/v1.md`
+- `protocols/community-authority/v1.md`
+- `protocols/federated-contribution/v1.md`
+- `protocols/public-artifact-sanitization/v1.md`
+- `protocols/trusted-transition-admission/v1.md`
+- `jurisdictions/`
+- `prompts/agent-contracts/`
+- `CONTRIBUTING.md`, `GOVERNANCE.md`, `SECURITY.md`
+
+Jurisdiction packs remain inactive until qualified human review. Federation is bilateral and quarantined: it never creates a central world tree or automatic identity merge. Community restrictions may be stricter than individual family consent. Portable receipt fields are non-authoritative; protected state transitions require the server-resolved `@family/security` admission runtime.
+
+## Founding Proof
+
+The public-safe reference surface is the **Founding Family Living Archive** / **Lebendiges Familienarchiv des Gründungstenants**. This name is synthetic and unlinkable; the actual founding family identity and all real records stay outside this public repository. Living people are private by default, and children never appear in public fixtures, screenshots, analytics, or examples.
 
 ## Hard Rules
 
@@ -25,6 +72,8 @@ The runtime lives in `family-intelligence-os`.
 - Treat family data as high-trust infrastructure.
 - Default to read-only and deny-by-default policies.
 - Review license, security, and maintainability before any fork or vendored dependency.
+- Keep private archival availability separate from public publication.
+- Treat `noindex` and hidden URLs as discoverability hints, never authorization.
 
 ## Guardian Network
 

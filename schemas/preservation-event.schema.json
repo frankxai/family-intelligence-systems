@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/preservation-event.v1.json",
+  "title": "Family Preservation Event",
+  "$comment": "Deaccession authorization requires actor_ref=human_* plus a server-resolved @family/security trusted-transition receipt. Embedded references and booleans are non-authoritative until resolved by the runtime repository.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "artifact_ref", "event_type", "occurred_at", "actor_ref", "authorization_ref", "validation", "storage_class"],
+  "properties": {
+    "event_id": { "type": "string", "pattern": "^preservation_[A-Za-z0-9_-]+$" },
+    "artifact_ref": { "type": "string", "pattern": "^artifact_[A-Za-z0-9_-]+$" },
+    "source_artifact_ref": { "type": "string", "pattern": "^artifact_[A-Za-z0-9_-]+$" },
+    "event_type": { "enum": ["ingest", "fixity_check", "copy", "migration", "derivative_created", "restore_test", "loss_detected", "corruption_detected", "access_suppressed", "deaccession_proposed", "deaccession_authorized"] },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "actor_ref": { "type": "string", "pattern": "^(human|agent|service)_[A-Za-z0-9_-]+$" },
+    "authorization_ref": { "type": "string", "pattern": "^(human_decision|policy_authorization|system_event)_[A-Za-z0-9_-]+$" },
+    "fixity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "digest"],
+      "properties": {
+        "algorithm": { "enum": ["sha256", "sha512"] },
+        "digest": { "type": "string", "pattern": "^[A-Fa-f0-9]{64,128}$" }
+      }
+    },
+    "validation": { "enum": ["passed", "failed", "not_applicable", "requires_human_review"] },
+    "storage_class": { "enum": ["quarantine", "preservation_original", "preservation_copy", "access_derivative", "encrypted_export", "suppressed"] },
+    "tool": { "type": "string", "maxLength": 240 },
+    "parameters_ref": { "type": "string", "maxLength": 500 },
+    "retention_rule_ref": { "type": "string", "pattern": "^retention_rule_[A-Za-z0-9_-]+$" },
+    "legal_hold_ref": { "type": "string", "pattern": "^legal_hold_[A-Za-z0-9_-]+$" },
+    "restore_test_ref": { "type": "string", "pattern": "^restore_test_[A-Za-z0-9_-]+$" },
+    "deaccession_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verified_human_ref", "human_decision_ref", "retention_check_ref", "legal_hold_check_ref", "dependency_graph_ref", "derivative_suppression_plan_ref", "runtime_validation_ref", "reason"],
+      "properties": {
+        "verified_human_ref": { "type": "string", "pattern": "^human_[A-Za-z0-9_-]+$" },
+        "human_decision_ref": { "type": "string", "pattern": "^human_decision_[A-Za-z0-9_-]+$" },
+        "retention_check_ref": { "type": "string", "pattern": "^retention_check_[A-Za-z0-9_-]+$" },
+        "legal_hold_check_ref": { "type": "string", "pattern": "^legal_hold_check_[A-Za-z0-9_-]+$" },
+        "dependency_graph_ref": { "type": "string", "pattern": "^dependency_graph_[A-Za-z0-9_-]+$" },
+        "derivative_suppression_plan_ref": { "type": "string", "pattern": "^suppression_plan_[A-Za-z0-9_-]+$" },
+        "runtime_validation_ref": { "type": "string", "pattern": "^runtime_validation_[A-Za-z0-9_-]+$" },
+        "reason": { "type": "string", "minLength": 10, "maxLength": 1000 }
+      }
+    },
+    "notes": { "type": "string", "maxLength": 2000 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "event_type": { "enum": ["fixity_check", "copy", "migration", "restore_test"] } }, "required": ["event_type"] },
+      "then": { "required": ["fixity"] }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "migration" } }, "required": ["event_type"] },
+      "then": { "required": ["source_artifact_ref", "tool"] }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "deaccession_authorized" } }, "required": ["event_type"] },
+      "then": {
+        "required": ["deaccession_controls"],
+        "properties": {
+          "actor_ref": { "pattern": "^human_[A-Za-z0-9_-]+$" },
+          "authorization_ref": { "pattern": "^human_decision_[A-Za-z0-9_-]+$" },
+          "validation": { "const": "passed" }
+        }
+      }
+    }
+  ]
+}

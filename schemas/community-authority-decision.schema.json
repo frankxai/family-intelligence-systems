@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/community-authority-decision.v1.json",
+  "title": "Community Authority Decision",
+  "$comment": "An active decision is valid only after server-side @family/security receipt resolution under protocols/trusted-transition-admission/v1.md. Embedded references and true flags are non-authoritative.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision_id", "authority_ref", "appointed_decision_maker_ref", "subject_refs", "status", "allowed_purposes", "restrictions", "effective_from", "review_due", "recorded_by", "recorded_at"],
+  "properties": {
+    "decision_id": { "type": "string", "pattern": "^community_decision_[A-Za-z0-9_-]+$" },
+    "authority_ref": { "type": "string", "pattern": "^community_authority_[A-Za-z0-9_-]+$" },
+    "appointed_decision_maker_ref": { "type": "string", "pattern": "^human_[A-Za-z0-9_-]+$" },
+    "subject_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "maxLength": 240 } },
+    "status": { "enum": ["active", "review_required", "disputed", "revoked", "expired"] },
+    "allowed_purposes": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1, "maxLength": 120 } },
+    "restrictions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["do_not_digitize", "no_ai_processing", "no_indexing", "no_derivatives", "no_translation", "no_federation", "no_public_release", "restricted_audience", "seasonal_access", "gender_or_role_restricted", "repatriation_required"] }
+    },
+    "audience_ref": { "type": "string", "maxLength": 240 },
+    "effective_from": { "type": "string", "format": "date" },
+    "effective_until": { "type": "string", "format": "date" },
+    "review_due": { "type": "string", "format": "date" },
+    "authority_verification_ref": { "type": "string", "pattern": "^authority_verification_[A-Za-z0-9_-]+$" },
+    "human_authorization_ref": { "type": "string", "pattern": "^human_decision_[A-Za-z0-9_-]+$" },
+    "semantic_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt_ref", "evaluated_at", "authority_verified", "human_identity_verified", "review_window_current"],
+      "properties": {
+        "receipt_ref": { "type": "string", "pattern": "^runtime_validation_[A-Za-z0-9_-]+$" },
+        "evaluated_at": { "type": "string", "format": "date-time" },
+        "authority_verified": { "const": true },
+        "human_identity_verified": { "const": true },
+        "review_window_current": { "const": true }
+      }
+    },
+    "revocation_or_repatriation_ref": { "type": "string", "pattern": "^(revocation|repatriation)_[A-Za-z0-9_-]+$" },
+    "recorded_by": { "type": "string", "pattern": "^human_[A-Za-z0-9_-]+$" },
+    "recorded_at": { "type": "string", "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "active" } }, "required": ["status"] },
+      "then": { "required": ["authority_verification_ref", "human_authorization_ref", "semantic_validation"] }
+    },
+    {
+      "if": { "properties": { "status": { "const": "revoked" } }, "required": ["status"] },
+      "then": { "required": ["revocation_or_repatriation_ref"] }
+    }
+  ]
+}

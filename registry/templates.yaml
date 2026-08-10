@@ -15,4 +15,43 @@ templates:
     name: Family Emergency Pack
     purpose: Confirmed export of emergency instructions and trusted contacts.
     sensitivity: critical
-
+  - id: lineage_claim_intake
+    name: Lineage Claim Intake
+    purpose: Quarantined intake for a relationship, event, identity, place, or story assertion.
+    sensitivity: high
+  - id: evidence_record
+    name: Evidence Record
+    purpose: Source, provenance, rights, integrity, extraction, and claim links.
+    sensitivity: high
+  - id: consent_receipt
+    name: Consent Receipt
+    purpose: Specific, granular, revocable authorization for a purpose, scope, and action.
+    sensitivity: critical
+  - id: publication_decision
+    name: Publication Decision
+    purpose: Human-reviewed redaction, rights, consent, rollback, and public-release record.
+    sensitivity: high
+  - id: succession_policy
+    name: Succession Policy
+    purpose: Separate emergency, incapacity, and death release rules with guardians and quorum.
+    sensitivity: critical
+  - id: export_manifest
+    name: Family Export Manifest
+    purpose: Encrypted, scoped, checksummed family export and restore contract.
+    sensitivity: critical
+  - id: dpia_outline
+    name: Family Intelligence DPIA Outline
+    purpose: Privacy-risk assessment structure for hosted family-data processing.
+    sensitivity: high
+  - id: secure_intake_case
+    name: Secure Family Intake Case
+    purpose: Quarantined transport, scanning, extraction, and steward-review state without claim acceptance.
+    sensitivity: high
+  - id: secure_intake_token
+    name: One-Time Family Intake Token
+    purpose: Single-use, expiring, family-scoped submission authorization.
+    sensitivity: critical
+  - id: private_tenant_manifest
+    name: Private Family Tenant Manifest
+    purpose: Policy-only tenant configuration with no personal records or secrets.
+    sensitivity: critical

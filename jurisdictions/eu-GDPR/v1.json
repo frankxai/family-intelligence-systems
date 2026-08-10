@@ -1,0 +1,41 @@
+{
+  "pack_id": "jurisdiction_eu_gdpr_v1",
+  "version": "1.0.0",
+  "jurisdiction": { "code": "EU", "name": "European Union", "level": "supranational" },
+  "status": "research_only",
+  "effective_from": "2018-05-25",
+  "review_due": "2027-01-18",
+  "reviewer": { "type": "unassigned", "reference": "qualified EU privacy reviewer required" },
+  "authorities": [
+    {
+      "title": "Regulation (EU) 2016/679 (General Data Protection Regulation)",
+      "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng",
+      "source_type": "official_law",
+      "checked_at": "2026-07-18"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "rule_living_person_processing",
+      "domain": "privacy",
+      "effect": "require_qualified_review",
+      "summary": "Processing personal data about living people requires a documented lawful basis, purpose limitation, minimisation, transparency, security, and applicable rights handling.",
+      "authority_indexes": [0]
+    },
+    {
+      "rule_id": "rule_special_category_data",
+      "domain": "special_category_data",
+      "effect": "block",
+      "summary": "Genetic, health, ethnic-origin, religious-belief, and other special-category data remain blocked until an Article 9 condition and qualified review are recorded.",
+      "authority_indexes": [0]
+    },
+    {
+      "rule_id": "rule_deceased_member_state_check",
+      "domain": "privacy",
+      "effect": "require_qualified_review",
+      "summary": "GDPR does not itself apply to deceased persons, but member-state rules and the rights and data of living relatives still require evaluation.",
+      "authority_indexes": [0]
+    }
+  ],
+  "unsupported_behavior": "block_pending_review"
+}

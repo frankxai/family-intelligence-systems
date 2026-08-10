@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/intake-case.v1.json",
+  "title": "Family Intake Case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "family_id",
+    "channel",
+    "state",
+    "privacy_scope",
+    "minor_impact",
+    "attachment_refs",
+    "claim_refs",
+    "consent_refs",
+    "audit_refs",
+    "received_at",
+    "updated_at"
+  ],
+  "properties": {
+    "case_id": { "type": "string", "pattern": "^case_[A-Za-z0-9_-]+$" },
+    "family_id": { "type": "string", "minLength": 1 },
+    "channel": { "enum": ["secure_form", "email_notice", "interview", "steward_entry", "api"] },
+    "intake_token_ref": { "type": "string", "pattern": "^itok_[A-Za-z0-9_-]+$" },
+    "claimant_ref": { "type": "string", "minLength": 1 },
+    "state": {
+      "enum": [
+        "received",
+        "quarantined",
+        "awaiting_secure_evidence",
+        "scan_pending",
+        "extraction_ready",
+        "normalized",
+        "review_ready",
+        "steward_decided",
+        "closed",
+        "rejected",
+        "withdrawn",
+        "expired"
+      ]
+    },
+    "privacy_scope": {
+      "enum": ["self", "household", "core_circle", "extended_family", "descendants_guardianship", "trusted_advisors"]
+    },
+    "affected_person_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "minor_impact": { "enum": ["none_known", "possible", "confirmed"] },
+    "attachment_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "claim_refs": { "type": "array", "items": { "type": "string", "pattern": "^claim_[A-Za-z0-9_-]+$" }, "uniqueItems": true },
+    "consent_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "steward_decision_ref": { "type": "string", "minLength": 1 },
+    "rejection_code": {
+      "enum": ["unsupported_content", "unsafe_attachment", "identity_unresolved", "consent_blocked", "out_of_scope", "duplicate", "other"]
+    },
+    "received_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "closed_at": { "type": "string", "format": "date-time" },
+    "audit_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+  }
+}

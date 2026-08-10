@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/family-circle.v1.json",
+  "title": "Family Circle Membership",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["membership_id", "family_id", "person_id", "circle", "status", "invited_by", "created_at"],
+  "properties": {
+    "membership_id": { "type": "string", "pattern": "^membership_[A-Za-z0-9_-]+$" },
+    "family_id": { "type": "string", "minLength": 1 },
+    "person_id": { "type": "string", "minLength": 1 },
+    "circle": { "enum": ["self", "household", "core_circle", "extended_family", "descendants_guardianship", "trusted_advisors", "public_archive"] },
+    "relationship_label": { "type": "string", "maxLength": 120 },
+    "status": { "enum": ["invited", "active", "declined", "suspended", "revoked"] },
+    "invited_by": { "type": "string", "minLength": 1 },
+    "guardian_person_id": { "type": "string", "minLength": 1 },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}

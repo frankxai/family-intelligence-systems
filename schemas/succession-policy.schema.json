@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/succession-policy.v1.json",
+  "title": "Succession Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_id",
+    "family_id",
+    "owner_person_id",
+    "trigger_type",
+    "guardian_person_ids",
+    "quorum",
+    "verification_requirements",
+    "cooling_period_hours",
+    "release_scopes",
+    "secret_export_allowed",
+    "status",
+    "created_at"
+  ],
+  "properties": {
+    "policy_id": { "type": "string", "pattern": "^succession_[A-Za-z0-9_-]+$" },
+    "family_id": { "type": "string", "minLength": 1 },
+    "owner_person_id": { "type": "string", "minLength": 1 },
+    "trigger_type": { "enum": ["emergency", "incapacity", "death"] },
+    "guardian_person_ids": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "quorum": { "type": "integer", "minimum": 2 },
+    "verification_requirements": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "cooling_period_hours": { "type": "integer", "minimum": 0 },
+    "release_scopes": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "secret_export_allowed": { "const": false },
+    "revocation_window_hours": { "type": "integer", "minimum": 0 },
+    "last_drill_at": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["draft", "active", "suspended", "revoked"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  }
+}

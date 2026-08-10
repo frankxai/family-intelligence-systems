@@ -1,0 +1,44 @@
+{
+  "pack_id": "jurisdiction_de_de_v1",
+  "version": "1.0.0",
+  "jurisdiction": { "code": "DE", "name": "Germany", "level": "country" },
+  "status": "research_only",
+  "effective_from": "2026-07-18",
+  "review_due": "2027-01-18",
+  "reviewer": { "type": "unassigned", "reference": "qualified German archives/privacy reviewer required" },
+  "authorities": [
+    {
+      "title": "Personenstandsgesetz § 5 Fortführung der Personenstandsregister",
+      "url": "https://www.gesetze-im-internet.de/pstg/__5.html",
+      "source_type": "official_law",
+      "checked_at": "2026-07-18"
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "rule_de_birth_register_period",
+      "domain": "civil_records",
+      "effect": "informational",
+      "summary": "German birth registers have a 110-year continuation period under § 5; archival access and publication remain separate decisions.",
+      "authority_indexes": [0],
+      "parameters": { "record_type": "birth", "years": 110 }
+    },
+    {
+      "rule_id": "rule_de_marriage_register_period",
+      "domain": "civil_records",
+      "effect": "informational",
+      "summary": "German marriage and civil-partnership registers have an 80-year continuation period under § 5, subject to the statutory special case.",
+      "authority_indexes": [0],
+      "parameters": { "record_type": "marriage_or_civil_partnership", "years": 80 }
+    },
+    {
+      "rule_id": "rule_de_death_register_period",
+      "domain": "civil_records",
+      "effect": "informational",
+      "summary": "German death registers have a 30-year continuation period under § 5; living-person and publication review remains required.",
+      "authority_indexes": [0],
+      "parameters": { "record_type": "death", "years": 30 }
+    }
+  ],
+  "unsupported_behavior": "block_pending_review"
+}

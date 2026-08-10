@@ -1,0 +1,36 @@
+version: 1
+notice: Diese Datei nur in einem privaten, verschlüsselten Familienarbeitsraum mit echten Namen ausfüllen.
+
+self:
+  owner_person_id: replace-private-id
+
+household:
+  members: []
+  purpose: gemeinsamer_alltag
+
+core_circle:
+  members: []
+  examples: [partner_in, elternteil, geschwister, gewaehlte_vertrauensperson]
+  access: pro_ressource
+
+extended_family:
+  members: []
+  examples: [tanten_onkel, cousins_cousinen, erwachsene_familienzweige]
+  default: keine_sensiblen_daten_lebender_personen
+
+descendants_guardianship:
+  profiles: []
+  examples: [nachkommen, nichten_neffen, patenkinder]
+  rules:
+    - guardian_managed
+    - age_appropriate
+    - no_public_discoverability
+    - age_transition_review_required
+
+trusted_advisors:
+  members: []
+  access: zweckgebunden_und_befristet
+
+public_archive:
+  resources: []
+  access: separate_einwilligungs_und_publikationsentscheidung

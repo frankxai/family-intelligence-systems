@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://family-intelligence.systems/schemas/intake-token.v1.json",
+  "title": "Family Intake Token",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "token_id",
+    "family_id",
+    "issued_by",
+    "secret_hash_ref",
+    "allowed_action",
+    "max_uses",
+    "use_count",
+    "minimum_scope",
+    "status",
+    "issued_at",
+    "expires_at",
+    "audit_refs"
+  ],
+  "properties": {
+    "token_id": { "type": "string", "pattern": "^itok_[A-Za-z0-9_-]+$" },
+    "family_id": { "type": "string", "minLength": 1 },
+    "issued_by": { "type": "string", "minLength": 1 },
+    "secret_hash_ref": { "type": "string", "minLength": 1 },
+    "recipient_binding_ref": { "type": "string", "minLength": 1 },
+    "allowed_action": { "enum": ["submit_claim", "submit_evidence", "submit_correction", "submit_memory"] },
+    "max_uses": { "const": 1 },
+    "use_count": { "type": "integer", "minimum": 0, "maximum": 1 },
+    "minimum_scope": {
+      "enum": ["self", "household", "core_circle", "extended_family", "descendants_guardianship", "trusted_advisors"]
+    },
+    "upload_policy_id": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["active", "redeemed", "expired", "revoked", "locked"] },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "redeemed_at": { "type": "string", "format": "date-time" },
+    "revoked_at": { "type": "string", "format": "date-time" },
+    "audit_refs": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+  }
+}
