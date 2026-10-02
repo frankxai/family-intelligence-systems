@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0",
+  "reviewedAt": "2026-10-02",
+  "privateArchiveConnected": false,
+  "activationDefault": "disabled",
+  "authority": "family-policy-gateway",
+  "options": [
+    {
+      "id": "chatgpt",
+      "interface": "ChatGPT Work",
+      "maturity": "skills package; remote OAuth MCP not provisioned",
+      "transport": "native skills; future authenticated remote MCP"
+    },
+    {
+      "id": "codex",
+      "interface": "Codex",
+      "maturity": "portable skills package",
+      "transport": "local skills; scoped code repository"
+    },
+    {
+      "id": "lobehub",
+      "interface": "LobeHub",
+      "maturity": "integration contract",
+      "transport": "version-pinned upstream deployment and scoped gateway"
+    },
+    {
+      "id": "open-webui",
+      "interface": "Open WebUI",
+      "maturity": "integration contract",
+      "transport": "SSO plus scoped gateway; test additive grants"
+    },
+    {
+      "id": "hermes",
+      "interface": "Hermes Agent",
+      "maturity": "disabled configuration example",
+      "transport": "local stdio MCP allowlist"
+    },
+    {
+      "id": "opencode",
+      "interface": "OpenCode V2",
+      "maturity": "disabled configuration example",
+      "transport": "local stdio MCP explicit deny permissions"
+    }
+  ]
+}
