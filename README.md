@@ -78,3 +78,13 @@ The public-safe reference surface is the **Founding Family Living Archive** / **
 ## Guardian Network
 
 The next layer is the Family Guardian Network: narrow agents for privacy, documentation, research, food and household life, gatherings, elder support, contact stewardship, and personal family hubs. See `canon/family-guardian-network.md`, `canon/family-hubs-and-libraries.md`, `registry/agents.yaml`, and `registry/hermes-swarm.family-guardian.json`.
+
+## Sovereign workspace release — October 2026
+
+- [Family workspace and trust boundaries](canon/sovereign-family-workspace.md)
+- [Runtime choices and actual maturity](registry/family-runtime-options.json)
+- [Family adoption with activation gates](playbooks/family-adoption.md)
+- [Library OS bridge](playbooks/library-os-bridge.md)
+- [Evidence-first graph drafts](protocols/knowledge-graph/draft-v1.md)
+
+The premium interface, three portable skills, six disabled workflow packs and graph validator live in the runtime repository. Private identity, vault custody, processing workers and cross-runtime adapters are not activated by deploying the template. This specification repository remains the governance canon.
